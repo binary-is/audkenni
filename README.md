@@ -1,6 +1,6 @@
 # About
 
-This is a basic and presumably most commonly needed implementation of electronic IDs at [https://www.audkenni.is/](Auðkenni).
+This is a basic and presumably most commonly needed implementation of electronic IDs at [Auðkenni](https://www.audkenni.is/).
 
 It currently only supports authentication on SIM cards through the REST API, version v200.
 
