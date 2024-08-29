@@ -1,3 +1,5 @@
 pkce
 pyjwt
 nanoid
+requests
+cryptography
