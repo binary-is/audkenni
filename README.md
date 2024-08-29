@@ -1,8 +1,8 @@
- # About
+# About
 
- This is a basic and presumably most commonly needed implementation of electronic IDs at [https://www.audkenni.is/](Auðkenni).
+This is a basic and presumably most commonly needed implementation of electronic IDs at [https://www.audkenni.is/](Auðkenni).
 
- It currently only supports authentication on SIM cards through the REST API, version v200.
+It currently only supports authentication on SIM cards through the REST API, version v200.
 
 # Usage
 
@@ -25,5 +25,15 @@ There is a basic example script called `example_use.py` which can be used like s
     ./example_use.py
 
 Check `example_use.py` for instructions on how to use it.
+
+# Security
+
+**USE THIS SOFTWARE AT YOUR OWN RISK.**
+
+While the instructions from Auðkenni were followed with the utmost diligence, the authors of this software **cannot** and therefore **do not** guarantee that it is secure.
+
+However, the code was explicitly written to be as easily reviewable as possible, reflecting the step-by-step process as explained in Auðkenni's instructions. In particular, the main function `audkenni.see_some_id` is composed of 6 functions, `step_1`, `step_2`, `step_3` etc., with each function reflecting the corresponding step in the instructions. So while we cannot guarantee that it is secure, we have made every effort to make sure that if there are any pitfalls in it, that they be noticed and fixed as quickly as possible. Feel free to help and contribute!
+
+# License
 
 It is licensed under the [MIT license](https://mit-license.org/) as per the `LICENSE` file.
