@@ -1,3 +1,5 @@
 *.swp
 __pycache__
 .env
+/audkenni.egg-info
+/dist
