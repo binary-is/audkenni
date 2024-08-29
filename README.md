@@ -15,7 +15,7 @@ It is configured using the environment variables found in `env-example`:
 
 The [`python-dotenv`](https://pypi.org/project/python-dotenv/) package is very handy for reading the `.env` file automatically.
 
-The client ID, secret and base URI must be retrieved from Auðkenni by purchasing a subscription to their services.
+The client ID, secret and base URI must be retrieved from Auðkenni by purchasing a subscription to their services. They will provide you with a testing client ID for development purposes, but you must contact them directly for that.
 
 There is a basic example script called `example_use.py` which can be used like so:
 
