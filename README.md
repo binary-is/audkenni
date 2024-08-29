@@ -32,7 +32,7 @@ Check `example_use.py` for instructions on how to use it in your own project.
 
 While the instructions from Auðkenni were followed with the utmost diligence, the authors of this software **cannot** and therefore **do not** guarantee that it is secure.
 
-However, the code was explicitly written to be as easily reviewable as possible, reflecting the step-by-step process as explained in Auðkenni's instructions. In particular, the main function `audkenni.see_some_id` is composed of 6 functions, `step_1`, `step_2`, `step_3` etc., with each function reflecting the corresponding step in the instructions. So while we cannot guarantee that it is secure, we have made every effort to make sure that if there are any pitfalls in it, that they be noticed and fixed as quickly as possible. Feel free to help and contribute!
+However, the code was explicitly written to be as easily reviewable as possible, reflecting the step-by-step process as explained in Auðkenni's instructions. In particular, the main function `audkenni.see_some_id` (in the file `audkenni/__init__.py`) is composed of 6 functions, `step_1`, `step_2`, `step_3` etc., with each function reflecting the corresponding step in the instructions. So while we cannot guarantee that it is secure, we have made every effort to make sure that if there are any pitfalls in it, that they be noticed and fixed as quickly as possible. Feel free to help and contribute!
 
 # License
 
