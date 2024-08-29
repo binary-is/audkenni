@@ -1,0 +1,2 @@
+class AudkenniException(Exception):
+    pass

@@ -1,0 +1,15 @@
+# Copy this file to '.env' and fill in the fields.
+# To test the example script, do:
+#
+#     source .env
+#     ./example_use.py
+#
+# For automatic loading of '.env', see the 'python-dotenv' docs at:
+# https://github.com/theskumar/python-dotenv
+#
+# You may also check the script 'example_use.py' to see usage.
+#
+export AUDKENNI_CLIENT_ID="exampleId"
+export AUDKENNI_SECRET="secret-string"
+export AUDKENNI_BASE_URI="https://example.audkenni.is:443"
+export AUDKENNI_DEV_MODE="true"  # Set to "false" or "" in production.
