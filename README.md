@@ -24,7 +24,7 @@ There is a basic example script called `example_use.py` which can be used like s
     source .env
     ./example_use.py
 
-Check `example_use.py` for instructions on how to use it.
+Check `example_use.py` for instructions on how to use it in your own project.
 
 # Security
 
