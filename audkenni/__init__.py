@@ -9,7 +9,7 @@ from audkenni.steps import step_6
 def see_some_id(phone_number: str, prompt: str) -> dict:
 
     # These steps reflect the steps described in the documentation at:
-    # https://audkenni.atlassian.net/wiki/spaces/DOC/pages/5289738241/SIM+Authentication+using+REST+API+api_v200#Step-4
+    # https://audkenni.atlassian.net/wiki/spaces/DOC/pages/5289738241/SIM+Authentication+using+REST+API+api_v200
 
     # STEP 1/6
     #
