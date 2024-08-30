@@ -251,6 +251,7 @@ def step_6(cookie, access_token, signature):
     person = {
         "name": data["name"],
         "nationalRegisterId": data["nationalRegisterId"],
+        "signature": data["signature"],
     }
 
     if not verify_signature(person, signature):
