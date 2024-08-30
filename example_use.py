@@ -7,7 +7,7 @@
 
 from audkenni import see_some_id  # Needs `load_dotenv()` before running.
 
-person = see_some_id("8885629", "Innskráning")
+person = see_some_id("5551234", "Innskráning")
 
 print("Name: %s" % person["name"])
 print("SSN: %s" % person["nationalRegisterId"])
