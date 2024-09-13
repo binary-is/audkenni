@@ -22,9 +22,7 @@ There is a basic example script called `example_use.py` which can be used like s
     cp env-example .env
     # Edit '.env' with your favorite editor.
     source .env
-    ./example_use.py
-
-Check `example_use.py` for instructions on how to use it in your own project.
+    ./example_use.py <phone-number> "<message>"
 
 # Security
 
