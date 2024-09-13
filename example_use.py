@@ -6,6 +6,7 @@
 #     load_dotenv()
 
 from audkenni import see_some_id  # Needs `load_dotenv()` before running.
+from audkenni.exceptions import AudkenniUserAbortedException
 from audkenni.exceptions import AudkenniWrongNumberException
 from sys import argv
 from sys import stderr
@@ -32,6 +33,9 @@ def main(argv):
 
     try:
         person = see_some_id(phone_number, message)
+    except AudkenniUserAbortedException:
+        print("Error: The user aborted the operation.")
+        quit(4)
     except AudkenniWrongNumberException:
         print("Error: Phone number seems without a valid electronic ID.", file=stderr)
         quit(2)

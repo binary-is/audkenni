@@ -10,6 +10,7 @@ from audkenni.config import MAX_POLLING_SECONDS
 from audkenni.config import POLLING_WAIT_SECONDS
 from audkenni.config import SECRET
 from audkenni.exceptions import AudkenniException
+from audkenni.exceptions import AudkenniUserAbortedException
 from audkenni.exceptions import AudkenniWrongNumberException
 from audkenni.utils import verify_signature
 from nanoid import generate
@@ -120,16 +121,22 @@ def step_3(auth_id):
             headers=json_headers,
             timeout=HTTP_TIMEOUT,
         )
-        response.raise_for_status()
 
-        data = response.json()
-        if "tokenId" in data:
-            # NOTE: The documentation claims that this `tokenId` is used as a
-            # login session, but we seem to have no need for it.
-            #
-            # Instead, we only use its presence to indicate that we are ready
-            # to receive more information in the next step (step 4).
-            break
+        if response.status_code == 200:
+            data = response.json()
+            if "tokenId" in data:
+                # NOTE: The documentation claims that this `tokenId` is used as a
+                # login session, but we seem to have no need for it.
+                #
+                # Instead, we only use its presence to indicate that we are ready
+                # to receive more information in the next step (step 4).
+                break
+        elif response.status_code == 401:
+            raise AudkenniUserAbortedException("The user aborted the operation.")
+        else:
+            raise AudkenniException(
+                "Unknown error occurred in communicating with remote server."
+            )
 
     cookie = response.headers["Set-cookie"]
 
