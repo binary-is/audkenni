@@ -1,3 +1,9 @@
+# v0.3.0
+
+- Example-use script updated to take arguments instead of hard-coding example data.
+- Exception provided for when a phone number doesn't seem to have a valid ID.
+- Exception provided for when user aborts the operation.
+
 # v0.2.0
 
 - README fixes.
