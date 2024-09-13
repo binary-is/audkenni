@@ -5,14 +5,16 @@
 #     from dotenv import load_dotenv
 #     load_dotenv()
 
-import sys
 from audkenni import see_some_id  # Needs `load_dotenv()` before running.
+from audkenni.exceptions import AudkenniWrongNumberException
+from sys import argv
+from sys import stderr
 
 
 def usage():
     print('Usage: ./example_use.py <phone-number> "<message>"')
     print()
-    quit()
+    quit(1)
 
 
 def parse_arguments(argv):
@@ -28,7 +30,11 @@ def parse_arguments(argv):
 def main(argv):
     phone_number, message = parse_arguments(argv)
 
-    person = see_some_id(phone_number, message)
+    try:
+        person = see_some_id(phone_number, message)
+    except AudkenniWrongNumberException:
+        print("Error: Phone number seems without a valid electronic ID.", file=stderr)
+        quit(2)
 
     print("Name: %s" % person["name"])
     print("SSN: %s" % person["nationalRegisterId"])
@@ -36,4 +42,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main(argv)

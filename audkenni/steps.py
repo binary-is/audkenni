@@ -10,6 +10,7 @@ from audkenni.config import MAX_POLLING_SECONDS
 from audkenni.config import POLLING_WAIT_SECONDS
 from audkenni.config import SECRET
 from audkenni.exceptions import AudkenniException
+from audkenni.exceptions import AudkenniWrongNumberException
 from audkenni.utils import verify_signature
 from nanoid import generate
 from time import sleep
@@ -74,11 +75,17 @@ def step_2(payload, phone_number, prompt):
         headers=json_headers,
         timeout=HTTP_TIMEOUT,
     )
-    response.raise_for_status()
-
-    auth_id = response.json()["authId"]
-
-    return auth_id
+    if response.status_code == 200:
+        auth_id = response.json()["authId"]
+        return auth_id
+    elif response.status_code == 401:
+        raise AudkenniWrongNumberException(
+            "Phone number does not seem to have a valid ID."
+        )
+    else:
+        raise AudkenniException(
+            "Unknown error occurred in communicating with remote server."
+        )
 
 
 def step_3(auth_id):
