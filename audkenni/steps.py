@@ -126,11 +126,11 @@ def step_3(auth_id):
         if response.status_code == 200:
             data = response.json()
             if "tokenId" in data:
-                # NOTE: The documentation claims that this `tokenId` is used as a
-                # login session, but we seem to have no need for it.
+                # NOTE: The documentation claims that this `tokenId` is used as
+                # a login session, but we seem to have no need for it.
                 #
-                # Instead, we only use its presence to indicate that we are ready
-                # to receive more information in the next step (step 4).
+                # Instead, we only use its presence to indicate that we are
+                # ready to receive more information in the next step (step 4).
                 break
         elif response.status_code == 401:
             raise AudkenniUserAbortedException("The user aborted the operation.")
