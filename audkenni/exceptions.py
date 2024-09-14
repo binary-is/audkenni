@@ -2,6 +2,14 @@ class AudkenniException(Exception):
     pass
 
 
+class AudkenniAuthenticationException(AudkenniException):
+    pass
+
+
+class AudkenniAuthenticationInProgress(AudkenniException):
+    pass
+
+
 class AudkenniUserAbortedException(AudkenniException):
     pass
 

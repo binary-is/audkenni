@@ -10,6 +10,8 @@ from audkenni.config import MAX_POLLING_SECONDS
 from audkenni.config import POLLING_WAIT_SECONDS
 from audkenni.config import SECRET
 from audkenni.exceptions import AudkenniException
+from audkenni.exceptions import AudkenniAuthenticationException
+from audkenni.exceptions import AudkenniAuthenticationInProgress
 from audkenni.exceptions import AudkenniUserAbortedException
 from audkenni.exceptions import AudkenniTimeoutException
 from audkenni.exceptions import AudkenniWrongNumberException
@@ -81,8 +83,18 @@ def step_2(payload, phone_number, prompt):
         auth_id = response.json()["authId"]
         return auth_id
     elif response.status_code == 401:
-        raise AudkenniWrongNumberException(
-            "Phone number does not seem to have a valid ID."
+        remote_msg = response.json()["message"]
+        if remote_msg == "mssp_209":
+            raise AudkenniAuthenticationInProgress(
+                "Authentication is already in progress."
+            )
+        elif remote_msg == "mssp_105":
+            raise AudkenniWrongNumberException(
+                "Phone number does not seem to have a valid ID."
+            )
+
+        raise AudkenniAuthenticationException(
+            "Authentication failed for unknown reasons."
         )
     else:
         raise AudkenniException(

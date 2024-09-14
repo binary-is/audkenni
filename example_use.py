@@ -6,6 +6,8 @@
 #     load_dotenv()
 
 from audkenni import see_some_id  # Needs `load_dotenv()` before running.
+from audkenni.exceptions import AudkenniAuthenticationException
+from audkenni.exceptions import AudkenniAuthenticationInProgress
 from audkenni.exceptions import AudkenniUserAbortedException
 from audkenni.exceptions import AudkenniTimeoutException
 from audkenni.exceptions import AudkenniWrongNumberException
@@ -34,6 +36,12 @@ def main(argv):
 
     try:
         person = see_some_id(phone_number, message)
+    except AudkenniAuthenticationException:
+        print("Error: Authentication failed.")
+        quit(16)
+    except AudkenniAuthenticationInProgress:
+        print("Error: Authentication already in progress.")
+        quit(32)
     except AudkenniUserAbortedException:
         print("Error: The user aborted the operation.")
         quit(4)
