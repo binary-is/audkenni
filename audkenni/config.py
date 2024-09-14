@@ -7,7 +7,7 @@ DEV_MODE = environ.get("AUDKENNI_DEV_MODE", "") == "true"
 
 # Optionally configured using `dotenv`.
 POLLING_WAIT_SECONDS = 2
-MAX_POLLING_SECONDS = 60
+MAX_POLLING_SECONDS = 30
 HTTP_TIMEOUT = 20
 
 # Short-hands for common remote paths so that we don't have to concatenate the
