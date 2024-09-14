@@ -11,6 +11,7 @@ from audkenni.config import POLLING_WAIT_SECONDS
 from audkenni.config import SECRET
 from audkenni.exceptions import AudkenniException
 from audkenni.exceptions import AudkenniUserAbortedException
+from audkenni.exceptions import AudkenniTimeoutException
 from audkenni.exceptions import AudkenniWrongNumberException
 from audkenni.utils import verify_signature
 from nanoid import generate
@@ -176,6 +177,10 @@ def step_4(cookie):
     # Get code from Location-header.
     location_header = response.headers.get("Location")
     query = parse_qs(urlparse(location_header).query)
+
+    if "code" not in query.keys():
+        raise AudkenniTimeoutException()
+
     code = query.get("code").pop()
 
     return code, code_verifier

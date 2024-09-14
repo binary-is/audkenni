@@ -7,6 +7,7 @@
 
 from audkenni import see_some_id  # Needs `load_dotenv()` before running.
 from audkenni.exceptions import AudkenniUserAbortedException
+from audkenni.exceptions import AudkenniTimeoutException
 from audkenni.exceptions import AudkenniWrongNumberException
 from sys import argv
 from sys import stderr
@@ -36,6 +37,9 @@ def main(argv):
     except AudkenniUserAbortedException:
         print("Error: The user aborted the operation.")
         quit(4)
+    except AudkenniTimeoutException:
+        print("Error: Operation timed out.")
+        quit(8)
     except AudkenniWrongNumberException:
         print("Error: Phone number seems without a valid electronic ID.", file=stderr)
         quit(2)
