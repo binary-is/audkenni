@@ -10,11 +10,11 @@ from audkenni.config import MAX_POLLING_SECONDS
 from audkenni.config import POLLING_WAIT_SECONDS
 from audkenni.config import SECRET
 from audkenni.exceptions import AudkenniException
-from audkenni.exceptions import AudkenniAuthenticationException
-from audkenni.exceptions import AudkenniAuthenticationInProgress
-from audkenni.exceptions import AudkenniUserAbortedException
-from audkenni.exceptions import AudkenniTimeoutException
-from audkenni.exceptions import AudkenniWrongNumberException
+from audkenni.exceptions import AuthException
+from audkenni.exceptions import AuthInProgressException
+from audkenni.exceptions import UserAbortedException
+from audkenni.exceptions import TimeoutException
+from audkenni.exceptions import WrongNumberException
 from audkenni.utils import verify_signature
 from nanoid import generate
 from time import sleep
@@ -85,17 +85,11 @@ def step_2(payload, phone_number, prompt):
     elif response.status_code == 401:
         remote_msg = response.json()["message"]
         if remote_msg == "mssp_209":
-            raise AudkenniAuthenticationInProgress(
-                "Authentication is already in progress."
-            )
+            raise AuthInProgressException("Authentication is already in progress.")
         elif remote_msg == "mssp_105":
-            raise AudkenniWrongNumberException(
-                "Phone number does not seem to have a valid ID."
-            )
+            raise WrongNumberException("Phone number does not seem to have a valid ID.")
 
-        raise AudkenniAuthenticationException(
-            "Authentication failed for unknown reasons."
-        )
+        raise AuthException("Authentication failed for unknown reasons.")
     else:
         raise AudkenniException(
             "Unknown error occurred in communicating with remote server."
@@ -145,7 +139,7 @@ def step_3(auth_id):
                 # ready to receive more information in the next step (step 4).
                 break
         elif response.status_code == 401:
-            raise AudkenniUserAbortedException("The user aborted the operation.")
+            raise UserAbortedException("The user aborted the operation.")
         else:
             raise AudkenniException(
                 "Unknown error occurred in communicating with remote server."
@@ -191,7 +185,7 @@ def step_4(cookie):
     query = parse_qs(urlparse(location_header).query)
 
     if "code" not in query.keys():
-        raise AudkenniTimeoutException()
+        raise TimeoutException()
 
     code = query.get("code").pop()
 

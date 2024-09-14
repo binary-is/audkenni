@@ -6,11 +6,11 @@
 #     load_dotenv()
 
 from audkenni import see_some_id  # Needs `load_dotenv()` before running.
-from audkenni.exceptions import AudkenniAuthenticationException
-from audkenni.exceptions import AudkenniAuthenticationInProgress
-from audkenni.exceptions import AudkenniUserAbortedException
-from audkenni.exceptions import AudkenniTimeoutException
-from audkenni.exceptions import AudkenniWrongNumberException
+from audkenni.exceptions import AuthException
+from audkenni.exceptions import AuthInProgressException
+from audkenni.exceptions import UserAbortedException
+from audkenni.exceptions import TimeoutException
+from audkenni.exceptions import WrongNumberException
 from sys import argv
 from sys import stderr
 
@@ -36,19 +36,19 @@ def main(argv):
 
     try:
         person = see_some_id(phone_number, message)
-    except AudkenniAuthenticationException:
+    except AuthException:
         print("Error: Authentication failed.")
         quit(16)
-    except AudkenniAuthenticationInProgress:
+    except AuthInProgressException:
         print("Error: Authentication already in progress.")
         quit(32)
-    except AudkenniUserAbortedException:
+    except UserAbortedException:
         print("Error: The user aborted the operation.")
         quit(4)
-    except AudkenniTimeoutException:
+    except TimeoutException:
         print("Error: Operation timed out.")
         quit(8)
-    except AudkenniWrongNumberException:
+    except WrongNumberException:
         print("Error: Phone number seems without a valid electronic ID.", file=stderr)
         quit(2)
 

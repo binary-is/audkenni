@@ -2,21 +2,21 @@ class AudkenniException(Exception):
     pass
 
 
-class AudkenniAuthenticationException(AudkenniException):
+class AuthException(AudkenniException):
     pass
 
 
-class AudkenniAuthenticationInProgress(AudkenniException):
+class AuthInProgressException(AudkenniException):
     pass
 
 
-class AudkenniUserAbortedException(AudkenniException):
+class UserAbortedException(AudkenniException):
     pass
 
 
-class AudkenniTimeoutException(AudkenniException):
+class TimeoutException(AudkenniException):
     pass
 
 
-class AudkenniWrongNumberException(AudkenniException):
+class WrongNumberException(AudkenniException):
     pass
