@@ -1,3 +1,7 @@
+# v0.5.1
+
+- Dependency update.
+
 # v0.5.0
 
 - Related party configurable.
