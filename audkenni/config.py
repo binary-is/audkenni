@@ -5,7 +5,10 @@ SECRET = environ.get("AUDKENNI_SECRET", "")
 BASE_URI = environ.get("AUDKENNI_BASE_URI", "https://example.audkenni.is:443")
 DEV_MODE = environ.get("AUDKENNI_DEV_MODE", "") == "true"
 
-# Optionally configured using `dotenv`.
+# Optionally used when authenticating on behalf of another party.
+RELATED_PARTY = environ.get("AUDKENNI_RELATED_PARTY", "")
+
+# Unlikely to change but centrally defined.
 POLLING_WAIT_SECONDS = 2
 MAX_POLLING_SECONDS = 30
 HTTP_TIMEOUT = 20

@@ -8,6 +8,7 @@ from audkenni.config import JSON_PATH
 from audkenni.config import OAUTH_PATH
 from audkenni.config import MAX_POLLING_SECONDS
 from audkenni.config import POLLING_WAIT_SECONDS
+from audkenni.config import RELATED_PARTY
 from audkenni.config import SECRET
 from audkenni.exceptions import AudkenniException
 from audkenni.exceptions import AuthException
@@ -50,7 +51,7 @@ def step_2(payload, phone_number, prompt):
     payload["callbacks"][0]["input"][0]["value"] = CLIENT_ID
 
     # "Sláðu inn Related Party"
-    payload["callbacks"][1]["input"][0]["value"] = ""
+    payload["callbacks"][1]["input"][0]["value"] = RELATED_PARTY
 
     # "Sláðu inn símanúmer eða kennitölu"
     payload["callbacks"][2]["input"][0]["value"] = phone_number

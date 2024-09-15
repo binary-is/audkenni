@@ -13,3 +13,7 @@ export AUDKENNI_CLIENT_ID="exampleId"
 export AUDKENNI_SECRET="secret-string"
 export AUDKENNI_BASE_URI="https://example.audkenni.is:443"
 export AUDKENNI_DEV_MODE="true"  # Set to "false" or "" in production.
+
+# Optional: To distinguish between parties requesting authentication, in no
+# particular format.
+export AUDKENNI_RELATED_PARTY=""
