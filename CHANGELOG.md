@@ -1,3 +1,7 @@
+# v0.5.0
+
+- Related party configurable.
+
 # v0.4.0
 
 - Polling timeout made consistent with Audkenni's apparent internal timeout of 30 seconds.
