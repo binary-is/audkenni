@@ -1,3 +1,7 @@
+# 0.5.2
+
+- Option to skip signature verification in step 6, since some IDs don't seem to support them.
+
 # v0.5.1
 
 - Dependency update.

@@ -6,7 +6,7 @@ from audkenni.steps import step_5
 from audkenni.steps import step_6
 
 
-def see_some_id(phone_number: str, prompt: str) -> dict:
+def see_some_id(phone_number: str, prompt: str, skip_signature_verification: bool = False) -> dict:
 
     # These steps reflect the steps described in the documentation at:
     # https://audkenni.atlassian.net/wiki/spaces/DOC/pages/5289738241/SIM+Authentication+using+REST+API+api_v200
@@ -59,6 +59,6 @@ def see_some_id(phone_number: str, prompt: str) -> dict:
     #
     # TODO: Missing explanatory comment.
     #
-    person = step_6(cookie, access_token, signature)
+    person = step_6(cookie, access_token, signature, skip_signature_verification)
 
     return person

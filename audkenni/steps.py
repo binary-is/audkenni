@@ -261,7 +261,7 @@ def step_5(cookie, code, code_verifier):
     return access_token, jwt_payload["signature"]
 
 
-def step_6(cookie, access_token, signature):
+def step_6(cookie, access_token, signature, skip_signature_verification=False):
     response = requests.post(
         OAUTH_PATH + "userinfo",
         headers={
@@ -280,7 +280,7 @@ def step_6(cookie, access_token, signature):
         "signature": data["signature"],
     }
 
-    if not verify_signature(person, signature):
+    if not skip_signature_verification and not verify_signature(person, signature):
         raise AudkenniException("Signature verification failed.")
 
     return person

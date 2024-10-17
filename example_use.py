@@ -22,6 +22,8 @@ def usage():
 
 
 def parse_arguments(argv):
+    phone_number = ""
+    message = ""
     try:
         phone_number = argv[1]
         message = argv[2]
@@ -36,6 +38,10 @@ def main(argv):
 
     try:
         person = see_some_id(phone_number, message)
+
+        # Signature verification can optionally be skipped like so. It is not
+        # recommended, but some IDs don't seem to support them.
+        # person = see_some_id(phone_number, message, skip_signature_verification=True)
     except AuthException:
         print("Error: Authentication failed.")
         quit(16)
